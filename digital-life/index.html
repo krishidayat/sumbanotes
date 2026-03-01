@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Digital Life Automation</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+</head>
+<body>
+  <div class="app">
+    <!-- Header -->
+    <header class="header">
+      <div class="header-left">
+        <div class="logo">⚡ DigiLife</div>
+        <div class="greeting" id="greeting"></div>
+      </div>
+      <div class="header-right">
+        <div class="clock" id="clock"></div>
+        <div class="date" id="date"></div>
+      </div>
+    </header>
+
+    <!-- Main Grid -->
+    <main class="grid">
+
+      <!-- Tasks Module -->
+      <section class="card tasks-card">
+        <div class="card-header">
+          <h2>✅ Tugas Hari Ini</h2>
+          <span class="badge" id="tasks-count">0</span>
+        </div>
+        <div class="task-input-row">
+          <input type="text" id="task-input" placeholder="Tambah tugas baru..." />
+          <select id="task-priority">
+            <option value="high">🔴 Tinggi</option>
+            <option value="medium" selected>🟡 Sedang</option>
+            <option value="low">🟢 Rendah</option>
+          </select>
+          <button onclick="addTask()">＋</button>
+        </div>
+        <ul class="task-list" id="task-list"></ul>
+        <div class="card-footer">
+          <button class="btn-sm" onclick="clearCompletedTasks()">Hapus Selesai</button>
+        </div>
+      </section>
+
+      <!-- Habits Module -->
+      <section class="card habits-card">
+        <div class="card-header">
+          <h2>🔄 Kebiasaan Harian</h2>
+          <span class="badge" id="habits-done">0/0</span>
+        </div>
+        <div class="task-input-row">
+          <input type="text" id="habit-input" placeholder="Tambah kebiasaan..." />
+          <button onclick="addHabit()">＋</button>
+        </div>
+        <ul class="habit-list" id="habit-list"></ul>
+        <div class="progress-bar-wrap">
+          <div class="progress-bar" id="habits-progress"></div>
+        </div>
+      </section>
+
+      <!-- Notes Module -->
+      <section class="card notes-card">
+        <div class="card-header">
+          <h2>📝 Catatan Cepat</h2>
+          <button class="btn-sm" onclick="saveNote()">💾 Simpan</button>
+        </div>
+        <textarea id="notes-area" placeholder="Tulis catatan cepat di sini..."></textarea>
+        <div class="note-status" id="note-status"></div>
+      </section>
+
+      <!-- Quick Links Module -->
+      <section class="card links-card">
+        <div class="card-header">
+          <h2>🔗 Tautan Cepat</h2>
+        </div>
+        <div class="task-input-row">
+          <input type="text" id="link-name" placeholder="Nama" />
+          <input type="url" id="link-url" placeholder="https://..." />
+          <button onclick="addLink()">＋</button>
+        </div>
+        <div class="links-grid" id="links-grid"></div>
+      </section>
+
+      <!-- Pomodoro Timer Module -->
+      <section class="card pomodoro-card">
+        <div class="card-header">
+          <h2>⏱ Pomodoro Timer</h2>
+          <span class="badge" id="pomodoro-session">Sesi 1</span>
+        </div>
+        <div class="pomodoro-display" id="pomodoro-display">25:00</div>
+        <div class="pomodoro-label" id="pomodoro-label">Waktu Fokus</div>
+        <div class="pomodoro-controls">
+          <button onclick="startPomodoro()">▶ Mulai</button>
+          <button onclick="pausePomodoro()">⏸ Jeda</button>
+          <button onclick="resetPomodoro()">🔄 Reset</button>
+        </div>
+        <div class="pomodoro-dots" id="pomodoro-dots"></div>
+      </section>
+
+      <!-- Mood Tracker Module -->
+      <section class="card mood-card">
+        <div class="card-header">
+          <h2>😊 Lacak Suasana Hati</h2>
+        </div>
+        <div class="mood-row">
+          <button class="mood-btn" onclick="setMood('😤','Stres')" title="Stres">😤</button>
+          <button class="mood-btn" onclick="setMood('😔','Sedih')" title="Sedih">😔</button>
+          <button class="mood-btn" onclick="setMood('😐','Biasa')" title="Biasa">😐</button>
+          <button class="mood-btn" onclick="setMood('🙂','Senang')" title="Senang">🙂</button>
+          <button class="mood-btn" onclick="setMood('😄','Hebat')" title="Hebat">😄</button>
+        </div>
+        <div class="mood-history" id="mood-history"></div>
+      </section>
+
+    </main>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
